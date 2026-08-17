@@ -6,6 +6,7 @@
 <title>Watchega — Competition Tracker</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="favicon.png" />
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -13,7 +14,7 @@
 <!-- LOGIN -->
 <div id="login-screen">
   <div class="login-card">
-    <h1>watchega<span style="color:var(--accent)">.</span></h1>
+    <img src="logo.png" alt="Watchega" class="login-logo" />
     <div class="tag">Sign in to your tracker</div>
     <label for="login-email">Email</label>
     <input id="login-email" type="email" autocomplete="username" />
@@ -27,7 +28,7 @@
 <!-- APP -->
 <div id="app" class="hidden">
   <div class="topbar">
-    <div class="brand">watchega<span class="dot">.</span></div>
+    <div class="brand"><img src="logo-navbar.png" alt="Watchega" class="brand-logo" /></div>
     <div class="search">
       <input id="search-input" type="text" placeholder="Search competitions…" />
     </div>

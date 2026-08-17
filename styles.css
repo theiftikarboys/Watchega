@@ -102,11 +102,11 @@ label {
   border-radius: 12px;
   padding: 48px;
 }
-.login-card h1 {
-  font-family: var(--font-mono);
-  font-size: 28px;
-  letter-spacing: .02em;
-  margin: 0 0 6px;
+.login-logo {
+  display: block;
+  width: 200px;
+  height: auto;
+  margin: 0 0 12px;
 }
 .login-card .tag {
   color: var(--text-dim);
@@ -134,12 +134,14 @@ label {
   backdrop-filter: blur(6px);
 }
 .topbar .brand {
-  font-family: var(--font-mono);
-  font-size: 15px;
-  letter-spacing: .04em;
-  white-space: nowrap;
+  display: flex;
+  align-items: center;
 }
-.topbar .brand .dot { color: var(--accent); }
+.topbar .brand-logo {
+  height: 22px;
+  width: auto;
+  display: block;
+}
 .topbar .search { flex: 1; max-width: 420px; }
 .topbar .spacer { flex: 1; }
 .topbar .who {
