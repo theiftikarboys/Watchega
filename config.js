@@ -4,6 +4,6 @@
 // Never put your service_role key here or anywhere in this file.
 
 window.WATCHEGA_CONFIG = {
-  SUPABASE_URL: "https://ecqloqodjpxlehrmoufi.supabase.co/rest/v1/",
+  SUPABASE_URL: "https://ecqloqodjpxlehrmoufi.supabase.co",
   SUPABASE_ANON_KEY: "sb_publishable_MIM4j4cl2nJjkHeLSeG2NA_81Aj4wHV"
 };

@@ -1,19 +1,19 @@
 :root {
-  --bg: #0E1417;
-  --panel: #161D22;
-  --panel-2: #1D262C;
-  --border: #2A343B;
-  --text: #E7EDF0;
-  --text-dim: #8FA0A8;
-  --accent: #4FD8C4;
-  --accent-dim: rgba(79, 216, 196, 0.14);
-  --danger: #E0645A;
-  --danger-dim: rgba(224, 100, 90, 0.14);
+  --bg: #FFFFFF;
+  --panel: #F7F9FA;
+  --panel-2: #EEF2F3;
+  --border: #DCE2E5;
+  --text: #17212A;
+  --text-dim: #5B6B73;
+  --accent: #17A18E;
+  --accent-dim: rgba(23, 161, 142, 0.10);
+  --danger: #C1443B;
+  --danger-dim: rgba(193, 68, 59, 0.08);
 
-  --status-student: #E8A33D;
-  --status-mentor: #9B8CFF;
-  --status-ready: #4FD8C4;
-  --status-submitted: #5FC97A;
+  --status-student: #B8710F;
+  --status-mentor: #6A55E0;
+  --status-ready: #17A18E;
+  --status-submitted: #2F8F49;
 
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
   --font-sans: 'Inter', -apple-system, sans-serif;
@@ -53,7 +53,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-
 }
 button.primary {
   background: var(--accent);
-  color: #06201C;
+  color: #FFFFFF;
   border-color: var(--accent);
   font-weight: 600;
 }
@@ -95,25 +95,28 @@ label {
 }
 .login-card {
   width: 100%;
-  max-width: 380px;
+  max-width: 480px;
   background: var(--panel);
   border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 32px;
+  box-shadow: 0 4px 24px rgba(23, 33, 42, 0.06);
+  border-radius: 12px;
+  padding: 48px;
 }
 .login-card h1 {
   font-family: var(--font-mono);
-  font-size: 20px;
+  font-size: 28px;
   letter-spacing: .02em;
-  margin: 0 0 4px;
+  margin: 0 0 6px;
 }
 .login-card .tag {
   color: var(--text-dim);
-  font-size: 13px;
-  margin-bottom: 20px;
+  font-size: 15px;
+  margin-bottom: 28px;
 }
-.login-card button.primary { width: 100%; margin-top: 18px; }
-#login-error { color: var(--danger); font-size: 13px; margin-top: 10px; min-height: 18px; }
+.login-card label { font-size: 12px; margin: 18px 0 7px; }
+.login-card input { padding: 13px 14px; font-size: 15px; }
+.login-card button.primary { width: 100%; margin-top: 24px; padding: 13px 14px; font-size: 15px; }
+#login-error { color: var(--danger); font-size: 13px; margin-top: 12px; min-height: 18px; }
 
 /* ---------------- App shell ---------------- */
 #app { min-height: 100vh; }
@@ -127,7 +130,7 @@ label {
   gap: 14px;
   padding: 14px 24px;
   border-bottom: 1px solid var(--border);
-  background: rgba(14, 20, 23, .92);
+  background: rgba(255, 255, 255, .92);
   backdrop-filter: blur(6px);
 }
 .topbar .brand {
