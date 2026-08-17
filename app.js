@@ -159,12 +159,12 @@ function render() {
   for (const c of rows) {
     const tr = document.createElement('tr');
     tr.innerHTML = `
-      <td class="name-cell">${escapeHTML(c.name)}${c.description ? `<span class="desc">${escapeHTML(c.description)}</span>` : ''}</td>
-      <td>${stageTrackerHTML(c.status)}</td>
-      <td class="date-cell">${fmtDate(c.registration_opens)}</td>
-      <td class="date-cell">${fmtDate(c.deadline)}</td>
-      <td class="date-cell">${fmtDate(c.last_status_update)}</td>
-      <td>${c.result ? escapeHTML(c.result) : '<span style="color:var(--text-dim)">—</span>'}</td>
+      <td class="name-cell" data-label="Name">${escapeHTML(c.name)}${c.description ? `<span class="desc">${escapeHTML(c.description)}</span>` : ''}</td>
+      <td data-label="Status">${stageTrackerHTML(c.status)}</td>
+      <td class="date-cell" data-label="Registration opens">${fmtDate(c.registration_opens)}</td>
+      <td class="date-cell deadline-cell" data-label="Deadline">${fmtDate(c.deadline)}</td>
+      <td class="date-cell last-update-cell" data-label="Last update">${fmtDate(c.last_status_update)}</td>
+      <td data-label="Result">${c.result ? escapeHTML(c.result) : '<span style="color:var(--text-dim)">—</span>'}</td>
     `;
     tr.addEventListener('click', () => openCompetitionModal(c.id));
     tbody.appendChild(tr);
