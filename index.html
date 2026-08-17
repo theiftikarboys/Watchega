@@ -37,6 +37,7 @@
     <div class="who">
       <span id="who-email"></span>
       <span id="who-role" class="role-badge"></span>
+      <button id="change-password-btn">Change password</button>
       <button id="signout-btn">Sign out</button>
     </div>
   </div>
@@ -155,6 +156,32 @@
       </div>
       <div id="invite-error" style="color:var(--danger); font-size:13px; margin-top:8px;"></div>
       <div id="invite-success" style="color:var(--accent); font-size:13px; margin-top:8px;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- CHANGE PASSWORD MODAL -->
+<div id="password-modal" class="modal-backdrop hidden">
+  <div class="modal" style="max-width: 420px;">
+    <div class="modal-head">
+      <h3>Change password</h3>
+      <button class="modal-close" id="password-modal-close-btn">×</button>
+    </div>
+
+    <label for="new-password">New password</label>
+    <input id="new-password" type="password" autocomplete="new-password" />
+
+    <label for="confirm-password">Confirm new password</label>
+    <input id="confirm-password" type="password" autocomplete="new-password" />
+
+    <div id="password-error" style="color:var(--danger); font-size:13px; margin-top:10px;"></div>
+
+    <div class="modal-actions">
+      <div class="left"></div>
+      <div class="right">
+        <button id="cancel-password-btn">Cancel</button>
+        <button id="save-password-btn" class="primary">Save</button>
+      </div>
     </div>
   </div>
 </div>

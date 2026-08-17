@@ -401,3 +401,36 @@ $('invite-btn').addEventListener('click', async () => {
     $('invite-error').textContent = err.message;
   }
 });
+
+// ---------- change password ----------
+$('change-password-btn').addEventListener('click', () => {
+  $('new-password').value = '';
+  $('confirm-password').value = '';
+  $('password-error').textContent = '';
+  $('password-modal').classList.remove('hidden');
+});
+$('password-modal-close-btn').addEventListener('click', () => $('password-modal').classList.add('hidden'));
+$('cancel-password-btn').addEventListener('click', () => $('password-modal').classList.add('hidden'));
+
+$('save-password-btn').addEventListener('click', async () => {
+  const pw = $('new-password').value;
+  const confirm = $('confirm-password').value;
+  $('password-error').textContent = '';
+
+  if (!pw || pw.length < 8) {
+    $('password-error').textContent = 'Password must be at least 8 characters.';
+    return;
+  }
+  if (pw !== confirm) {
+    $('password-error').textContent = 'Passwords do not match.';
+    return;
+  }
+
+  const { error } = await sb.auth.updateUser({ password: pw });
+  if (error) {
+    $('password-error').textContent = error.message;
+    return;
+  }
+  $('password-modal').classList.add('hidden');
+  toast('Password updated.');
+});
