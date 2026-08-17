@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Watchega — Competition Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-card">
+    <h1>watchega<span style="color:var(--accent)">.</span></h1>
+    <div class="tag">Sign in to your tracker</div>
+    <label for="login-email">Email</label>
+    <input id="login-email" type="email" autocomplete="username" />
+    <label for="login-password">Password</label>
+    <input id="login-password" type="password" autocomplete="current-password" />
+    <div id="login-error"></div>
+    <button class="primary" id="login-btn">Sign in</button>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app" class="hidden">
+  <div class="topbar">
+    <div class="brand">watchega<span class="dot">.</span></div>
+    <div class="search">
+      <input id="search-input" type="text" placeholder="Search competitions…" />
+    </div>
+    <div class="spacer"></div>
+    <button id="manage-users-btn" class="hidden">Manage users</button>
+    <button id="add-competition-btn" class="primary">+ Add competition</button>
+    <div class="who">
+      <span id="who-email"></span>
+      <span id="who-role" class="role-badge"></span>
+      <button id="signout-btn">Sign out</button>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="content-header">
+      <h2 id="results-count">Competitions</h2>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th data-sort="name">Name<span class="arrow"></span></th>
+            <th data-sort="status">Status<span class="arrow"></span></th>
+            <th data-sort="registration_opens">Reg. opens<span class="arrow"></span></th>
+            <th data-sort="deadline">Deadline<span class="arrow"></span></th>
+            <th data-sort="last_status_update">Last update<span class="arrow"></span></th>
+            <th data-sort="result">Result<span class="arrow"></span></th>
+          </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
+      <div id="empty-state" class="empty-state hidden">
+        <div class="big">No competitions yet</div>
+        <div>Add your first one to start tracking it.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPETITION MODAL -->
+<div id="competition-modal" class="modal-backdrop hidden">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="modal-title">Add competition</h3>
+      <button class="modal-close" id="modal-close-btn">×</button>
+    </div>
+
+    <label for="f-name">Name</label>
+    <input id="f-name" type="text" />
+
+    <label for="f-description">Description</label>
+    <textarea id="f-description" rows="3"></textarea>
+
+    <label for="f-url">URL</label>
+    <input id="f-url" type="url" placeholder="https://…" />
+
+    <div class="field-row">
+      <div>
+        <label for="f-reg-opens">Registration opens</label>
+        <input id="f-reg-opens" type="date" />
+      </div>
+      <div>
+        <label for="f-deadline">Deadline</label>
+        <input id="f-deadline" type="date" />
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div>
+        <label for="f-status">Status</label>
+        <select id="f-status">
+          <option>Student working on it</option>
+          <option>Mentor working on it</option>
+          <option>Submission Ready by Student</option>
+          <option>Submitted</option>
+        </select>
+      </div>
+      <div>
+        <label for="f-result">Result</label>
+        <input id="f-result" type="text" placeholder="e.g. Finalist, Pending, Not selected" />
+      </div>
+    </div>
+
+    <div id="modal-error" style="color:var(--danger); font-size:13px; margin-top:10px;"></div>
+
+    <!-- Documents (only shown once the competition exists) -->
+    <div id="doc-section" class="doc-section hidden">
+      <label style="margin:0 0 8px;">Documents</label>
+      <ul id="doc-list" class="doc-list"></ul>
+      <div id="doc-empty" class="doc-empty hidden">No documents uploaded yet.</div>
+      <div class="upload-row">
+        <input id="doc-file-input" type="file" />
+        <button id="doc-upload-btn">Upload</button>
+      </div>
+    </div>
+
+    <div class="modal-actions">
+      <div class="left">
+        <button id="delete-competition-btn" class="danger hidden">Delete competition</button>
+      </div>
+      <div class="right">
+        <button id="cancel-competition-btn">Cancel</button>
+        <button id="save-competition-btn" class="primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MANAGE USERS MODAL -->
+<div id="users-modal" class="modal-backdrop hidden">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>Manage users</h3>
+      <button class="modal-close" id="users-modal-close-btn">×</button>
+    </div>
+
+    <div id="user-list"></div>
+
+    <div style="margin-top:20px; padding-top:18px; border-top:1px solid var(--border);">
+      <label for="invite-email">Invite by email</label>
+      <div style="display:flex; gap:10px;">
+        <input id="invite-email" type="email" placeholder="name@example.com" />
+        <button id="invite-btn" class="primary">Invite</button>
+      </div>
+      <div id="invite-error" style="color:var(--danger); font-size:13px; margin-top:8px;"></div>
+      <div id="invite-success" style="color:var(--accent); font-size:13px; margin-top:8px;"></div>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

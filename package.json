@@ -1,0 +1,9 @@
+{
+  "name": "watchega",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Watchega — private competition tracker and document repository",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.4"
+  }
+}
